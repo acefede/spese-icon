@@ -16,11 +16,10 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
 </style></head><body>
 <iframe id="f" allow="clipboard-write"></iframe>
 <script>
-// Il link dell'app non è scritto qui: arriva dall'indirizzo (#ID) e viene ricordato sul dispositivo.
+// Il link dell'app non è scritto qui e non viene salvato: funziona solo se l'indirizzo contiene #ID.
 (function(){
-  var h=decodeURIComponent(location.hash.slice(1)).trim(),k='appId',id=h;
-  try{ if(id) localStorage.setItem(k,id); else id=localStorage.getItem(k)||''; }catch(e){}
-  if(!id){ document.body.innerHTML='<p style="font:16px -apple-system,sans-serif;padding:24px;color:#888">Apri questa pagina con l\'indirizzo completo (con #…) la prima volta.</p>'; return; }
+  var id=decodeURIComponent(location.hash.slice(1)).trim();
+  if(!id){ document.body.innerHTML=''; return; }
   var url=/^https?:/.test(id)?id:'https://script.google.com/macros/s/'+id+'/exec';
   document.getElementById('f').src=url;
 })();
