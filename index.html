@@ -16,6 +16,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
 </style></head><body>
 <iframe id="f" allow="clipboard-write"></iframe>
 <script>
+// Il link dell'app non è scritto qui e non viene salvato: funziona solo se l'indirizzo contiene #ID.
 (function(){
   var id=decodeURIComponent(location.hash.slice(1)).trim();
   if(!id){ document.body.innerHTML=''; return; }
